@@ -11,7 +11,7 @@ lazy_static! {
     pub static ref SEARCH: SimSearch<emoji_card::Props> = {
         let mut engine: SimSearch<emoji_card::Props> = SimSearch::new();
         for emoji in all_emojis().iter() {
-            engine.insert(emoji.clone(), emoji.alias);
+            engine.insert(emoji.clone(), emoji.name);
         }
         engine
     };
@@ -23,9 +23,9 @@ pub fn filter_emojis(input: &str) -> Vec<emoji_card::Props> {
 
 pub fn all_emojis() -> Vec<emoji_card::Props> {
     let mut result = vec![];
-    for (alias, emoji) in emojic::alias::GEMOJI_MAP.iter() {
+    for emoji in emojic::grouped::base_emojis() {
         result.push(emoji_card::Props {
-            alias: alias,
+            name: emoji.name,
             value: emoji.grapheme,
         })
     }

@@ -31,7 +31,7 @@ pub fn Home() -> Element {
                 emoji_grid::view {
                     for emoji in all {
                         emoji_card::view {
-                            alias: emoji.alias,
+                            name: emoji.name,
                             value: emoji.value,
                         }
                     }
@@ -42,7 +42,7 @@ pub fn Home() -> Element {
                 emoji_grid::view {
                     for emoji in filtered {
                         emoji_card::view {
-                            alias: emoji.alias,
+                            name: emoji.name,
                             value: emoji.value,
                         }
                     }
